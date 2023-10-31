@@ -1,0 +1,22 @@
+using System;
+
+class Atividade
+{
+    static void Main(String[] args)
+    {
+        int num;
+
+        Console.WriteLine("Digite sua idade");
+        
+        num= int.Parse(Console.ReadLine());
+
+        if (num % 5 == 0) {
+            Console.WriteLine($"Sua idade {num} e multiplo de cinco");
+
+        }
+        else { 
+            Console.WriteLine($"Sua idade {num} não e multiplo de cinco");
+            
+        }
+    }
+}
