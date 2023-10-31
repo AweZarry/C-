@@ -1,0 +1,22 @@
+using System;
+
+class Atividade
+{
+    static void Main(string[] args)
+    {
+        int num;
+
+        Console.WriteLine("Digite sua idade:");
+        num = int.Parse(Console.ReadLine());
+
+        if (num >= 20 && num <= 30)
+        {
+            Console.WriteLine($"Sua idade {num} esta entre 20 e 30");
+        }
+        else
+        {
+            Console.WriteLine($"Sua idade {num} não esta entre 20 e 30");
+        }
+
+    }
+}

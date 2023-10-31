@@ -1,0 +1,18 @@
+using System;
+class Atividade
+{
+    static void Main(string[] args)
+    {
+        int num;
+        Console.WriteLine("\n\tDigite Sua idade:");
+        num=int.Parse(Console.ReadLine());
+        if (num % 2 == 0)
+        {
+            Console.WriteLine($"\n\t Sua idade {num} é um número par:");
+        }
+        else
+        {
+            Console.WriteLine($"\n\t Sua idade {num} é um número impar:");
+        }
+    }
+}

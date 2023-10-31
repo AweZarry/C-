@@ -1,0 +1,43 @@
+using System;
+class Atividade
+{
+    static void Main(string[] args)
+    {
+        int primos = 0;
+
+        Console.Write("Digite sua idade(ACEITAMOS SOMENTE PESSOAS NOVAS DE 1 A 10 ANOS):");
+        int numero = int.Parse(Console.ReadLine());
+
+        if (numero >= 1 && numero <= 20)
+        {
+            if (Primin(numero))
+            {
+                Console.WriteLine($"Sua idade {numero} é um número primo.");
+            }
+            else
+            {
+                Console.WriteLine($"Sua idade {numero} não é um número primo.");
+            }
+
+            primos++;
+        }
+    }
+
+    static bool Primin(int numero)
+    {
+        if (numero <= 1)
+        {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.Sqrt(numero); i++)
+        {
+            if (numero % i == 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
