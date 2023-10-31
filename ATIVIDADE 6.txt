@@ -1,0 +1,31 @@
+using System;
+using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
+
+class Atividade
+{
+    static void Main(String[] args)
+    {
+        string palavra;
+        char letra;
+
+        Console.WriteLine("Digite uma palavra:");
+        palavra = Console.ReadLine();
+        Console.WriteLine($"Sua palavra e *{palavra}*");
+
+        Console.WriteLine($"Agora digite uma letra e descubra a quantidade dela na sua palavra {palavra}");
+        letra = char.Parse( Console.ReadLine() );
+        Console.WriteLine($"A letra que você quer descobrir a quantidade e *{letra}*");
+
+        int contador = 0;
+        int quantidade = palavra.IndexOf(letra);
+
+        for (int i = quantidade; i != -1; i = palavra.IndexOf(letra, i + 1))
+        {
+            contador++;
+        }
+
+        Console.WriteLine($"A letra '{letra}' aparece {contador} vezes na palavra '{palavra}'.");
+    }
+
+}
