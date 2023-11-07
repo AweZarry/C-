@@ -1,0 +1,51 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+
+class Pesquisa
+{
+    static void Main(string[] args)
+    {
+        Cliente cliente1 = new Cliente(14564784943);
+        cliente1.Nome = ("Marcos");
+        Console.WriteLine(cliente1.Nome);
+        Console.WriteLine();
+        cliente1.Endereco = ("Rua Daquelas");
+        Console.WriteLine(cliente1.Endereco);
+        Console.WriteLine();
+        Console.WriteLine($"CPF: {cliente1.Formatado()}");
+
+
+
+    }
+
+    public class Cliente
+    {
+        public string Nome { get; set; }
+        public string Endereco { get; set; }
+        private long CPF;
+        public Cliente(long Numero)
+        {
+            if (Numero.ToString().Length != 11)
+            {
+                throw new ArgumentException("O CPF deve ter 11 dígitos.");
+            }
+
+            this.CPF = Numero;
+        }
+
+
+        public long Numero
+        {
+            get { return CPF; }
+            set { CPF = value; }
+        }
+
+        public string Formatado()
+        {
+            string cpfFormatado = CPF.ToString("00000000000");
+            return $"{cpfFormatado.Substring(0, 3)}.{cpfFormatado.Substring(3, 3)}.{cpfFormatado.Substring(6, 3)}-{cpfFormatado.Substring(9)}";
+        }
+    }
+}
+

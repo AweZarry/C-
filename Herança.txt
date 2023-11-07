@@ -1,0 +1,70 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+class Herança
+{
+    public static void Main(string[] args)
+    {
+
+        Animal Marcos = new Cachorro();
+        Marcos.Nome = ("Marcos");
+        Console.WriteLine(Marcos.Nome);
+        Marcos.Idade = (3);
+        Console.WriteLine(Marcos.Idade);
+        Marcos.Som();
+        Console.WriteLine();
+
+
+        Animal Marcinha = new Passaro();
+        Marcinha.Nome = ("Marcinha");
+        Console.WriteLine(Marcinha.Nome);
+        Marcinha.Idade = (4);
+        Console.WriteLine(Marcinha.Idade);
+        Marcinha.Som();
+        Console.WriteLine();
+
+        Animal Mauricio = new Gato();
+        Mauricio.Nome = ("Mauricio");
+        Console.WriteLine("Mauricio.Nome");
+        Mauricio.Idade = (5);
+        Console.WriteLine(Mauricio.Idade);
+        Mauricio.Som();
+
+    }
+    
+    public class Animal
+    {
+        public string Nome;
+        public int Idade;
+        public virtual void Som()
+        {
+            Console.WriteLine("Barulho do Animal");
+        }
+    }
+
+    public class Cachorro : Animal
+    {
+        public override void Som()
+        {
+            Console.WriteLine("Au-Au");
+        }
+    }
+
+    public class Gato : Animal
+    {
+        public override void Som()
+        {
+            Console.WriteLine("Miau");
+        }
+    }
+
+    public class Passaro : Animal
+    {
+
+        public override void Som()
+        {
+            Console.WriteLine("Piu");
+        }
+
+    }
+}

@@ -1,0 +1,65 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Veiculo carro = new Carro();
+        carro.Nome = ("Toyota");
+        Console.WriteLine(carro.Nome);
+        carro.Cor = ("Branco");
+        Console.WriteLine(carro.Cor);
+        carro.Mover();
+        Console.WriteLine();
+
+        Veiculo moto = new Moto();
+        moto.Nome = ("Pop100");
+        Console.WriteLine(moto.Nome);
+        moto.Cor = ("Vermelha");
+        Console.WriteLine(moto.Cor);
+        moto.Mover();
+        Console.WriteLine();
+       
+        Veiculo caminhao = new Caminhao();
+        caminhao.Nome = ("Scania");
+        Console.WriteLine(caminhao.Nome);
+        caminhao.Cor = ("Preto");
+        Console.WriteLine(caminhao.Cor);
+        caminhao.Mover();
+        Console.WriteLine(); 
+
+    }
+
+    abstract class Veiculo
+    {
+        public string Nome;
+        public string Cor;
+        public abstract void Mover();
+    }
+    class Carro : Veiculo
+    {
+
+        public override void Mover()
+        {
+            Console.WriteLine("O carro se move a 80Km/H");
+        }
+    }
+
+    class Moto : Veiculo
+    {
+
+        public override void Mover()
+        {
+            Console.WriteLine("A Moto se move a 70Km/H");
+        }
+    }
+
+    class Caminhao : Veiculo
+    {
+        public override void Mover()
+        {
+            Console.WriteLine("O Caminhao se move a 60Km/H");
+        }
+    }
+}

@@ -1,0 +1,91 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Retangulo retangulo = new Retangulo();
+        retangulo.Largura = (2);
+        retangulo.Altura = (4);
+        retangulo.CalcularArea();
+        Console.WriteLine();
+        retangulo.CalcularPerimetro();
+
+        Console.WriteLine();
+
+        Circulo circulo = new Circulo();
+        circulo.Raio = (5);
+        circulo.CalcularArea();
+        Console.WriteLine();
+        circulo.CalcularPerimetro();
+
+        Console.WriteLine();
+
+        Triangulo triangulo = new Triangulo();
+        triangulo.Largura = (3);
+        triangulo.Altura = (2);
+        triangulo.CalcularArea();
+        Console.WriteLine();
+        triangulo.CalcularPerimetro();
+
+        Console.WriteLine();
+
+
+    }
+
+    public class Forma
+    {
+        public virtual void CalcularArea()
+        {
+            Console.WriteLine("Não e possivel fazer o Calculo de Área");
+        }
+
+        public virtual void CalcularPerimetro()
+        {
+            Console.WriteLine("Não e possivel fazer o Calculo de Perimetro");
+        }
+    }
+
+    public class Retangulo : Forma
+    {
+        public int Largura;
+        public int Altura;
+
+        public override void CalcularArea()
+        {
+            Console.WriteLine($"Área do Retangulo é: " + (Largura * Altura));
+        }
+
+        public override void CalcularPerimetro()
+        {
+            Console.WriteLine($"Perimetro do Retangulo é: " + (2 * (Largura + Altura)));
+        }
+    }
+
+    public class Circulo : Forma
+    {
+        public int Raio;
+
+        public override void CalcularArea()
+        {
+            Console.WriteLine($"Área do Circulo é: " + (Math.PI * Raio * Raio));
+        }
+
+        public override void CalcularPerimetro()
+        {
+            Console.WriteLine($"Perimetro do Circulo é: " + (2 * Math.PI * Raio));
+        }
+    }
+
+    public class Triangulo : Forma
+    {
+        public int Largura;
+        public int Altura;
+
+        public override void CalcularArea()
+        {
+            Console.WriteLine($"Área do Triangulo é: " + ((Largura * Altura) / 2));
+        }
+    }
+}

@@ -1,0 +1,51 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Emprestavel livro = new Livro();
+        livro.Emprestar();
+        Console.WriteLine();
+
+        Emprestavel revista = new Revista();
+        revista.Emprestar();
+        Console.WriteLine();
+
+        Emprestavel dvd = new DVD();
+        dvd.Emprestar();
+        Console.WriteLine();
+
+
+    }
+
+    interface Emprestavel
+    {
+        void Emprestar();
+    }
+
+    class Livro : Emprestavel
+    {
+        public void Emprestar()
+        {
+            Console.WriteLine("Pode ser emprestado três livros de uma vez");
+        }
+    }
+
+    class Revista : Emprestavel 
+    {
+        public void Emprestar()
+        {
+            Console.WriteLine("Revista pode ser emprestada somente para ler na Biblioteca");
+        }
+    }
+
+    class DVD : Emprestavel
+    {
+        public void Emprestar()
+        {
+            Console.WriteLine("DVD pode ser emprestado somente um por semana.");
+        }
+    }
+}
