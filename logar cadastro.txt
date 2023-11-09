@@ -1,0 +1,89 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Pessoa pessoa1 = new Pessoa();
+
+        Console.WriteLine("Qual ação?\n\n1-Cadastrar\n2-Logar");
+        int escolha = int.Parse(Console.ReadLine());
+
+        if (escolha == 1)
+        {
+            Console.Clear();
+            Console.WriteLine("Tela de Cadastro:");
+            Console.WriteLine();
+            Console.WriteLine("Digite seu nome:");
+            pessoa1.Nome = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Digite sua senha:");
+            pessoa1.Senha = Console.ReadLine();
+
+            pessoa1.Cadastro();
+        }
+
+        if (escolha == 2)
+        {
+            Console.Clear();
+            Console.WriteLine("Tela de Login:");
+            Console.WriteLine();
+            Console.WriteLine("Digite seu nome:");
+            pessoa1.Nome = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Digite sua senha:");
+            pessoa1.Senha = Console.ReadLine();
+
+            pessoa1.Login();
+        }
+
+    }
+
+    public class Pessoa
+    {
+        public string Nome; 
+        public string Senha;
+        
+        public void Cadastro()
+        {
+            if (File.Exists($@"C:\Registro\dados{Nome}.txt"))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Ja existe um usuário com esse nome!!");
+                return;
+            }
+
+                if (Nome == "" || Senha == "")
+            {
+                Console.WriteLine("Por favor digite algo");
+                return;
+            }
+            string Caminho = $@"C:\Registro\dados{Nome}.txt";
+            string Dados = $"{Nome}\n{Senha}";
+            File.WriteAllText(Caminho, Dados);
+
+            if (File.Exists($@"C:\Registro\dados{Nome}.txt"))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Cadastrado com sucesso");
+            }
+        }
+
+        public void Login()
+        {
+            string Caminho = $@"C:\Registro\dados{this.Nome}.txt";
+            string Dados = File.ReadAllText($@"C:\Registro\dados{this.Nome}.txt");
+            if (Dados.Contains(Nome) && Dados.Contains(Senha))
+            {
+                Console.WriteLine("Logado com sucesso");
+                Console.WriteLine($"Seja bem-vindo:{Nome}");
+            }
+            else
+            {
+                Console.WriteLine("Esse usuário não existe");
+            }
+
+        }
+    }
+}

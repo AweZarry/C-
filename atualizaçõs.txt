@@ -1,0 +1,124 @@
+while (personagem1.Vida > 0 && vilao.VidaInimigo > 0)
+
+
+        {
+
+            if (personagem1.Magia < 15)
+            {
+                Console.WriteLine("\nATENÇÃO: Como sua magia acabou, a opção '2' está inutilizada!");
+            }
+
+
+            if (personagem1.ContadorAtaques == 0)
+            {
+                Console.WriteLine("O Chefe da Empresa te atacou com uma cadeira oque você ira fazer");
+
+                vilao.DarDano(personagem1);
+
+                Console.WriteLine("\nOh, não! O inimigo te atacou! Menos 15 de vida!\n");
+
+                Console.WriteLine($"Vida do Herói: {personagem1.Vida}");
+                Console.WriteLine($"Magia do Herói: {personagem1.Magia}");
+                Console.WriteLine($"Vida do Inimigo: {vilao.VidaInimigo}");
+
+                personagem1.ContadorAtaques = 1;
+            }
+
+            Console.WriteLine("\nEscolha uma ação e digite-a de acordo com sua opção:");
+            Console.WriteLine("1 - Ataque Físico");
+
+            if (personagem1.Magia >= 15)
+            {
+                Console.WriteLine("2 - Ataque Mágico");
+            }
+
+            Console.WriteLine("3 - Usar Poção de Cura");
+            Console.WriteLine("4 - Usar Poção de Recuperar Magia\n");
+
+            string escolha = Console.ReadLine();
+
+            switch (escolha)
+            {
+                case "1":
+                    personagem1.AtaqueFisico(vilao);
+                    break;
+                case "2":
+                    if (personagem1.Magia >= 15)
+                    {
+                        personagem1.AtaqueMagico(vilao);
+                    }
+
+                    break;
+                    if (personagem1.Vida > 0)
+                    {
+                        personagem1.UsarPocaoCura();
+                        break;
+                    }
+                case "3":
+                    personagem1.UsarPocaoCura();
+                    break;
+
+                case "4":
+                    personagem1.UsarPocaoRecuperarMagia();
+                    break;
+                default:
+                    Console.WriteLine("\nEscolha inválida. Tente novamente.");
+                    break;
+            }
+
+            if (escolha == "1")
+            {
+                Console.WriteLine("\nVocê causou 10 de dano no inimigo!\n");
+
+            }
+
+            else if (escolha == "2")
+            {
+                Console.WriteLine("\nVocê causou 20 de dano mágico no inimigo! Contudo, você gastou 15 de magia!\n");
+
+            }
+
+            else if (escolha == "3")
+            {
+                Console.WriteLine("\nVocê recuperou 20 de vida!\n");
+            }
+
+            else
+            {
+                Console.WriteLine("\nVocê recuperou 20 de magia!\n");
+            }
+
+            Console.WriteLine($"Vida do Herói: {personagem1.Vida}");
+            Console.WriteLine($"Magia do Herói: {personagem1.Magia}");
+            Console.WriteLine($"Vida do Inimigo: {vilao.VidaInimigo}");
+
+
+            if (personagem1.ContadorAtaques == 3)
+            {
+                vilao.DarDano(personagem1);
+
+                Console.WriteLine("\nOh, não! O inimigo te atacou! Menos 15 de vida!\n");
+
+                Console.WriteLine($"Vida do Herói: {personagem1.Vida}");
+                Console.WriteLine($"Magia do Herói: {personagem1.Magia}");
+                Console.WriteLine($"Vida do Inhimigo: {vilao.VidaInimigo}");
+
+                personagem1.ContadorAtaques = 1;
+            }
+
+        }
+
+        if (personagem1.Vida <= 0)
+        {
+            Console.Clear();
+            Console.WriteLine($"\nVocê perdeu. GAME OVER! você efetuou um total de {personagem1.ContadorAtaquesFisicos} ataques físicos, e {personagem1.ContadorAtaquesMagicos} ataques mágicos");
+        }
+
+        if (vilao.VidaInimigo <= 0)
+        {
+            Console.Clear();
+            Console.WriteLine($"\nParabéns! Você derrotou o inimigo! Você ganhou!  você efetuou um total de {personagem1.ContadorAtaquesFisicos} ataques físicos, e {personagem1.ContadorAtaquesMagicos} ataques mágicos");
+            Console.WriteLine("Agora Você e o Dono da Empresa Parabens!!!");
+        }
+    }
+}

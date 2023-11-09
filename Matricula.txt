@@ -1,0 +1,57 @@
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+class Estudante
+{
+    public string Nome;
+    public int Idade;
+    public string Matricula;
+
+    public void Registros()
+    {
+        if (File.Exists($@"C:\Matricula\Estudantes{Nome}.txt"))
+        {
+            Console.WriteLine();
+            Console.WriteLine("Ja existe uma matricula com esse nome!!");
+            return;
+        }
+
+        if (Nome == "" || Idade == 0 || Matricula == "")
+        {
+            Console.WriteLine("Por favor digite algo para fazer sua matricula");
+            return;
+        }
+        string Caminho = $@"C:\Matricula\Estudantes{Nome}.txt";
+        string Dados = $"{Nome}\n{Idade}\n{Matricula}";
+        File.WriteAllText(Caminho, Dados);
+
+        if (File.Exists($@"C:\Matricula\Estudantes{Nome}.txt"))
+        {
+            Console.WriteLine();
+            Console.WriteLine("Matricula realizada com sucesso");
+        }
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Estudante estudande1 = new Estudante();
+
+        Console.Clear();
+        Console.WriteLine("Tela de Matricula:");
+        Console.WriteLine();
+        Console.WriteLine("Digite seu nome:");
+        estudande1.Nome = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("Digite sua idade:");
+        estudande1.Idade = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+        Console.WriteLine("Digite o codigo de sua Matricula");
+        estudande1.Matricula = Console.ReadLine();
+
+        estudande1.Registros();
+    }
+
+}
